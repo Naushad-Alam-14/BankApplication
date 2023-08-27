@@ -18,8 +18,8 @@ public class SBIBankImpl implements Bank {
         // check existing account/ dedupe
         return sbiRepository.addAccount(user);
     }
-    public String closeAccount(){
-        System.out.println(sbiRepository);
+    public String closeAccount(String acctNo){
+        sbiRepository.closeAccount(acctNo);
         return "Account has been closed successfully";
     }
     public void deposit(){

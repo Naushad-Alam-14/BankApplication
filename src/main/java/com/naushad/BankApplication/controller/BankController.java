@@ -17,15 +17,22 @@ public class BankController {
         return bank.openAccount(user);
     }
 
-    @GetMapping("/getCustomer/{acctNo}")
-    public Customer getCustomer(@PathVariable String acctNo){
+    @GetMapping("/getCustomer/{id}/{acctNo}")
+    public Customer getCustomer(@PathVariable String acctNo,@PathVariable int id){
+        System.out.println(" AcctNo = " + acctNo + ", Id = " + id);
         return bank.findCustomerByAccountNumber(acctNo);
     }
 
-    @DeleteMapping("/close")
-    public String closeAccount(){
+    @GetMapping("/getCustomerByParam")
+    public Customer getCustomerUsingParam(@RequestParam String acctNo,@RequestParam int id){
+        System.out.println(" AcctNo = " + acctNo + ", Id = " + id);
+        return bank.findCustomerByAccountNumber(acctNo);
+    }
+
+    @DeleteMapping("/close/{acctNo}")
+    public String closeAccount(@PathVariable String acctNo){
         System.out.println("Close method got called from browser");
-        return bank.closeAccount();
+        return bank.closeAccount(acctNo);
     }
 
 

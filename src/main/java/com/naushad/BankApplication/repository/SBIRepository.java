@@ -29,4 +29,9 @@ public class SBIRepository {
     public Customer findCustomerByAccountNumber(String acctNo){
         return map.get(acctNo);
     }
+
+    public void closeAccount(String acctNo) {
+        map.remove(acctNo);
+        System.out.println(map);
+    }
 }
