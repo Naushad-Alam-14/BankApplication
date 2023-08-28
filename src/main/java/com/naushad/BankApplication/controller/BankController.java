@@ -13,7 +13,7 @@ public class BankController {
     Bank bank;
 
     @PostMapping("/add")
-    public Customer addUser(@RequestBody User user){
+    public Object addUser(@RequestBody User user){
         return bank.openAccount(user);
     }
 

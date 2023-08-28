@@ -14,8 +14,13 @@ public class SBIBankImpl implements Bank {
     @Autowired
     SBIRepository sbiRepository;
 
-    public Customer openAccount(User user){
+    public Object openAccount(User user){
         // check existing account/ dedupe
+        boolean isUserExist = sbiRepository.checkUserIsPresentOrNot(user.getAadhaarNo());
+
+        if(isUserExist){
+            return "User has already bank account in our branch";
+        }
         return sbiRepository.addAccount(user);
     }
     public String closeAccount(String acctNo){

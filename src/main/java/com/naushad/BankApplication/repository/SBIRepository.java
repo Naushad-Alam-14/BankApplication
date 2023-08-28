@@ -34,4 +34,15 @@ public class SBIRepository {
         map.remove(acctNo);
         System.out.println(map);
     }
+
+    public boolean checkUserIsPresentOrNot(String aadhaarNo){
+
+        for(Customer cust : map.values()){
+            if(aadhaarNo.equals(cust.getUser().getAadhaarNo())){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
